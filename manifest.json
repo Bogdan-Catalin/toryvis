@@ -1,6 +1,6 @@
 {
   "name": "toryvis",
-  "version": "0.1",
+  "version": 1",
   "description": "A different history visualizer.",
   "background": {
     "scripts": ["background.js"]
