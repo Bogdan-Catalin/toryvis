@@ -1,0 +1,21 @@
+{
+  "name": "toryvis",
+  "version": "0.1",
+  "description": "A different history visualizer.",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  
+  "permissions": [
+    "bookmarks",
+	"history",
+	"tabs"
+  ],
+  
+  "browser_action": {
+      "default_title": "toryvis",
+      "default_icon": "icon.png"
+  },
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
+}
