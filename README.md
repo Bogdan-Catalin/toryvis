@@ -1,0 +1,3 @@
+# toryvis (web browser history visualizer) #
+
+Să se creeze o extensie pentru un browser Web capabilă să ofere utilizatorului diverse maniere de vizualizare a istoricului navigării şi a adreselor Web favorite (bookmark-uri) – eventual preluate din surse externe precum Delicious sau Pocket. Reprezentările grafice generate vor putea fi exportate, minimal, în formate raster precum PNG şi formate vectoriale ca SVG.
