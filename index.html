@@ -13,7 +13,34 @@
 
 	<div id="content">
 
+		<div class="sort_container">
+			<p class="sort_label">Sort by</p>
+			<select class="sort_dropdown">
+				<option value="accessed">Most accessed</option>
+				<option value="date">Newest</option>
+			</select>
+			<select class="sort_dropdown">
+				<option value="descending">Descending</option>
+				<option value="ascending">Ascending</option>
+			</select>
+		</div>
+
+		<form id="search_box">
+			<input class="search_text" type="text" placeholder="Search">
+			<input class="search_button" type="button" value="" >
+		</form>
+
+		<div id="history_item_view">
+		</div>
+
+		<ul id="button_list">
+			<li> <a class="main_button" href="#">Switch to Bookmarks </a></li>
+			<li> <a class="main_button" href="#">Export </a></li>
+			<li> <a class="delete_button" href="#"> </a></li>
+		</ul>
 	</div>
+
+
 
 	<footer id="footer"></footer>
 </body>
