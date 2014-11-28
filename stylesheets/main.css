@@ -1,0 +1,43 @@
+html, body
+{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+
+	overflow: hidden;
+}
+
+#header
+{
+	width: 100%;
+	height: 10%;
+	margin: 0;
+
+	background-color: #316262;
+}
+
+#content
+{
+	width: 100%;
+	height: 80%;
+	margin: 0;
+
+	background-color: #ffe9aa;
+
+	position: relative;
+	z-index: 1;
+
+	-webkit-box-shadow: 18px 18px 13px 7px rgba(0,0,0,0.75);
+	   -moz-box-shadow: 18px 18px 13px 7px rgba(0,0,0,0.75);
+	        box-shadow: 18px 18px 13px 7px rgba(0,0,0,0.75);
+}
+
+#footer
+{
+	width: 100%;
+	height: 10%;
+	margin: 0;
+
+	display: inline-block;
+	background-color: #316262;
+}
