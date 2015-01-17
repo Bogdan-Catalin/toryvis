@@ -1,5 +1,5 @@
-function loadHistoryItems(sortFunction) {
-    chrome.history.search({text: '', maxResults: 10000}, function (data) {
+function loadHistoryItems(sortFunction,searchString) {
+    chrome.history.search({text: searchString, maxResults: 10000}, function (data) {
         data.sort (sortFunction);
         data.forEach(function (page) {
             // Get favicon url
@@ -65,7 +65,7 @@ function loadHistoryItems(sortFunction) {
 }
 
 $( document ).ready(function() {
-    loadHistoryItems(descCompareHistoryDate);
+    loadHistoryItems(descCompareHistoryDate,'');
 });
 
 // Used for sorting

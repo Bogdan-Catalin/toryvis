@@ -10,6 +10,9 @@ function sortHistoryItems () {
     var dropDownCrit = document.getElementById("ascOrDesc");
     var criteria = dropDownCrit.options[dropDownCrit.selectedIndex].text;
 
+    var searchInput = document.getElementById("searchText");
+    var searchString = searchInput.value;
+
     console.log (option);
     console.log (criteria);
 
@@ -19,11 +22,11 @@ function sortHistoryItems () {
         deleteHistoryViewItems();
         if (criteria.indexOf('Descending') > -1)
         {
-            loadHistoryItems(descCompareHistoryDate);
+            loadHistoryItems(descCompareHistoryDate,searchString);
         }
         else
         {
-            loadHistoryItems(ascCompareHistoryDate);
+            loadHistoryItems(ascCompareHistoryDate,searchString);
         }
     }
     if (option.indexOf('Most') > -1)
@@ -32,11 +35,11 @@ function sortHistoryItems () {
         deleteHistoryViewItems();
         if (criteria.indexOf('Descending') > -1)
         {
-            loadHistoryItems(descCompareHistoryVisits());
+            loadHistoryItems(descCompareHistoryVisits,searchString);
         }
         else
         {
-            loadHistoryItems(ascCompareHistoryDate);
+            loadHistoryItems(ascCompareHistoryDate,searchString);
         }
     }
 }
