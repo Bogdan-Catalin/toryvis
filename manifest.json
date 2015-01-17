@@ -9,7 +9,11 @@
   "permissions": [
     "bookmarks",
 	"history",
-	"tabs"
+	"tabs",
+    "chrome://favicon/*",
+    "chrome://thumb/*",
+    "chrome-resource://*",
+    "file:///*"
   ],
   
   "browser_action": {
