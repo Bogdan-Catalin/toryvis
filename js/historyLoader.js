@@ -1,5 +1,6 @@
-$(document).ready(function() {
-    chrome.history.search({text: ''}, function (data) {
+function loadHistoryItems(sortFunction) {
+    chrome.history.search({text: '', maxResults: 10000}, function (data) {
+        data.sort (sortFunction);
         data.forEach(function (page) {
             // Get favicon url
             var faviconUrl = 'chrome://favicon/' + page.url;
@@ -25,12 +26,10 @@ $(document).ready(function() {
             // Visit count
             var visitSpan = document.createElement('span');
             visitSpan.className = "historyVisits";
-            if (page.visitCount>1)
-            {
+            if (page.visitCount > 1) {
                 var visitText = document.createTextNode('Visited ' + page.visitCount + ' times');
             }
-            else
-            {
+            else {
                 var visitText = document.createTextNode('Visited once');
             }
             visitSpan.appendChild(visitText);
@@ -63,4 +62,41 @@ $(document).ready(function() {
             document.getElementById('history_item_view').appendChild(mainNode);
         });
     });
+}
+
+$( document ).ready(function() {
+    loadHistoryItems(descCompareHistoryDate);
 });
+
+// Used for sorting
+function descCompareHistoryVisits(a,b) {
+    if (a.visitCount < b.visitCount)
+        return 1;
+    if (a.visitCount > b.visitCount)
+        return -1;
+    return 0;
+}
+
+function ascCompareHistoryVisits(a,b) {
+    if (a.visitCount < b.visitCount)
+        return -1;
+    if (a.visitCount > b.visitCount)
+        return 1;
+    return 0;
+}
+
+function descCompareHistoryDate(a,b) {
+    if (a.lastVisitTime < b.lastVisitTime)
+        return 1;
+    if (a.lastVisitTime > b.lastVisitTime)
+        return -1;
+    return 0;
+}
+
+function ascCompareHistoryDate(a,b) {
+    if (a.lastVisitTime < b.lastVisitTime)
+        return -1;
+    if (a.lastVisitTime > b.lastVisitTime)
+        return 1;
+    return 0;
+}

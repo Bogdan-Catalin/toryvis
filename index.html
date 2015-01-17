@@ -9,6 +9,8 @@
 	<script src="js/mouseWheelHorizontalScroll.js"></script>
 	<script src="js/historyLoader.js"></script>
 
+	<script src="js/sortingFilters.js"></script>
+
 	<link rel="icon" type="image/png" href="icon.png">
 
 	<title>toryvis</title>
@@ -21,11 +23,11 @@
 
 		<div class="sort_container">
 			<p class="sort_label">Sort by</p>
-			<select class="sort_dropdown">
+			<select id="dateOrVisits" class="sort_dropdown">
 				<option value="date">Date accessed</option>
 				<option value="accessed">Most accessed</option>
 			</select>
-			<select class="sort_dropdown">
+			<select id="ascOrDesc" class="sort_dropdown">
 				<option value="descending">Descending</option>
 				<option value="ascending">Ascending</option>
 			</select>
