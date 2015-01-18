@@ -2,15 +2,20 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/scrollbar.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/controls.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/historyContainer.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/inputBoxes.css">
 
 	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery.mousewheel.js"></script>
+	<script src="js/horizontalScroll/jquery.mousewheel.js"></script>
 
-	<script src="js/mouseWheelHorizontalScroll.js"></script>
-	<script src="js/historyLoader.js"></script>
+	<script src="js/horizontalScroll/mouseWheelHorizontalScroll.js"></script>
 
-	<script src="js/sortingFilters.js"></script>
-	<script src="js/searchFilter.js"></script>
+	<script src="js/history/historyLoader.js"></script>
+	<script src="js/history/sortingFilters.js"></script>
+	<script src="js/history/searchFilter.js"></script>
+	<script src="js/history/deleteHistory.js"></script>
 
 	<link rel="icon" type="image/png" href="icon.png">
 
@@ -34,6 +39,9 @@
 			</select>
 		</div>
 
+		<span id="search_not_found">
+		</span>
+
 		<form id="search_box">
 			<input class="search_text" id="searchText" type="text" placeholder="Search">
 			<input class="search_button" id="searchButton" type="button" value="" >
@@ -45,7 +53,7 @@
 		<ul id="button_list">
 			<li> <a class="main_button" href="#">Switch to Bookmarks </a></li>
 			<li> <a class="main_button" href="#">Export </a></li>
-			<li> <a class="delete_button" href="#"> </a></li>
+			<li> <a class="delete_button" id="deleteButton" href="#"> </a></li>
 		</ul>
 	</div>
 

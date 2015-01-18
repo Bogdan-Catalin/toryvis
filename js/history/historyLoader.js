@@ -1,5 +1,15 @@
 function loadHistoryItems(sortFunction,searchString) {
     chrome.history.search({text: searchString, maxResults: 10000}, function (data) {
+        var errorNode = document.getElementById('search_not_found');
+        if (data.length == 0)
+        {
+            errorNode.innerHTML="Could not find " + searchString + ".";
+            return;
+        }
+        else
+        {
+            errorNode.innerHTML="";
+        }
         data.sort (sortFunction);
         data.forEach(function (page) {
             // Get favicon url
@@ -39,7 +49,8 @@ function loadHistoryItems(sortFunction,searchString) {
             dateSpan.className = "historyDate";
             var visitDate = page.lastVisitTime;
             var date = new Date(visitDate);
-            var dateText = document.createTextNode(date.toString());
+            var formatedDate = formatDate (date);
+            var dateText = document.createTextNode(formatedDate);
             var textBeforeDate = document.createTextNode('Last time visited on');
             dateSpan.appendChild(textBeforeDate);
             dateSpan.appendChild(document.createElement('br'));
@@ -51,7 +62,13 @@ function loadHistoryItems(sortFunction,searchString) {
             var urlText = document.createTextNode(page.url);
             historySpan.appendChild(urlText);
 
+            // Checkbox for history delete
+            var checkbox = document.createElement('input');
+            checkbox.type = "checkbox";
+            checkbox.className = "historyDeleteCheckbox";
+
             // Append nodes
+            mainNode.appendChild(checkbox);
             mainNode.appendChild(faviconNode);
             mainNode.appendChild(titleSpan);
             mainNode.appendChild(visitSpan);
@@ -65,7 +82,7 @@ function loadHistoryItems(sortFunction,searchString) {
 }
 
 $( document ).ready(function() {
-    loadHistoryItems(descCompareHistoryDate,'');
+    loadHistoryItems(descCompareHistoryDate,'')
 });
 
 // Used for sorting
@@ -99,4 +116,17 @@ function ascCompareHistoryDate(a,b) {
     if (a.lastVisitTime > b.lastVisitTime)
         return 1;
     return 0;
+}
+
+function formatDate (date)
+{
+    var m_names = new Array("JAN", "FEB", "MAR",
+        "APR", "MAY", "JUN", "JUL", "AUG", "SEP",
+        "OCT", "NOV", "DEC");
+
+    var curr_date = date.getDate();
+    var curr_month = date.getMonth();
+    var curr_year = date.getFullYear();
+    return (curr_date + "-" + m_names[curr_month]
+    + "-" + curr_year);
 }

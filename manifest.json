@@ -10,10 +10,7 @@
     "bookmarks",
 	"history",
 	"tabs",
-    "chrome://favicon/*",
-    "chrome://thumb/*",
-    "chrome-resource://*",
-    "file:///*"
+    "chrome://favicon/*"
   ],
   
   "browser_action": {

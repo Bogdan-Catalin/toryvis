@@ -13,9 +13,6 @@ function sortHistoryItems () {
     var searchInput = document.getElementById("searchText");
     var searchString = searchInput.value;
 
-    console.log (option);
-    console.log (criteria);
-
     if (option.indexOf('Date') > -1)
     {
         // Sort by date
