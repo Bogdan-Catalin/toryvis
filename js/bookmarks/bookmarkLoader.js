@@ -48,7 +48,7 @@ function loadBookmarkItems (sortFunction, searchString)
             mainNode.id = page.id;
             mainNode.className = 'history_item_container';
 
-            // Create nodes with browsing detail
+            // Add favicon
             var faviconNode = document.createElement('img');
             faviconNode.src = faviconUrl;
             faviconNode.className = "historyFavicon";
@@ -58,6 +58,26 @@ function loadBookmarkItems (sortFunction, searchString)
             titleSpan.className = "historyTitle";
             var titleText = document.createTextNode(page.title);
             titleSpan.appendChild(titleText);
+
+            /* Currently not used due to google not resolving issue 21330 and I don't want to burn user by traversing the bookmark tree every time a bookmark is loaded
+            // Get bookmark path
+            var bookmarkPath = [];
+            var currentBookmark = page;
+            var i = 0;
+            // For this we have to ascend in the hierarchy
+            // parentId is ommited if node is in root.
+            while (currentBookmark.parentId != 0) {
+                console.log (currentBookmark);
+                chrome.bookmarks.get (currentBookmark.parentId, function (parentNode) {
+                    console.log (parentNode);
+                    bookmarkPath.push (parentNode[0].title);
+                    currentBookmark = parentNode[0];
+                });
+                i ++;
+                if (i == 10) {break;}
+            }
+            console.log (bookmarkPath);
+            */
 
             // Last visit date
             var dateSpan = document.createElement('span');
@@ -121,4 +141,20 @@ function filterByString (data, searchString)
         else if (data[i].title.indexOf(searchString)>-1 && data[i].url.length>0) {result.push(data[i]);}
     }
     return result;
+}
+
+function descCompareBookmarkDate(a,b) {
+    if (a.dateAdded < b.dateAdded)
+        return 1;
+    if (a.dateAdded > b.dateAdded)
+        return -1;
+    return 0;
+}
+
+function ascCompareBookmarkDate(a,b) {
+    if (a.dateAdded < b.dateAdded)
+        return -1;
+    if (a.dateAdded > b.dateAdded)
+        return 1;
+    return 0;
 }

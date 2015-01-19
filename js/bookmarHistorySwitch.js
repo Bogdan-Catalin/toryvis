@@ -6,28 +6,46 @@ function switchBookmarkHistory ()
     var button = document.getElementById ('switchHistoryBookmarks');
     var buttonText = button.innerHTML;
 
+    // Bookmark Mode
     if (buttonText.indexOf("Bookmark") > -1)
     {
         button.innerHTML="Switch to History";
+
         // remove graphical history elements
         deleteHistoryViewItems();
 
-        // Load bookmarks
-        loadBookmarkItems(descCompareHistoryDate,'');
+        // Attach bookmark events
+        attachBookmarkEvents();
+
+        // Load bookmark UI
+        loadBookmarkItems(descCompareBookmarkDate,'');
+
+        // Change UI to Bookmark mode
         changeUiForBookmarksMode();
     }
+
+    // History Mode
     else if (buttonText.indexOf("History") > -1)
     {
         button.innerHTML="Switch to Bookmarks";
-        // remove graphical bookmark elements
+
+        // Remove graphical bookmark elements;
         deleteHistoryViewItems();
+
+        // Attach history events
+        attachHistoryEvents();
+
+        // Load history UI
         loadHistoryItems(descCompareHistoryDate,'');
+
+        // Change UI to History Mode
         changeUiForHistoryMode();
     }
 }
 
+
 /**
- *  Modifies ids of elements which are used in history-related functions
+ *  Modifies elements which are used in history-related functions
  */
 function changeUiForHistoryMode ()
 {
@@ -42,11 +60,21 @@ function changeUiForHistoryMode ()
         sort.options.add (opt);
     }
 
+    // Replace #mode text and retrigger animation
+    var modeText = document.getElementById('mode');
+    modeText.innerHTML = "History";
+
+    // Retrigger
+    var clone = document.getElementById("mode").cloneNode(true);
+    var header = document.getElementById("header");
+    header.replaceChild (clone,document.getElementById("mode"));
+
     //TODO: remove bookmark import buttons
 }
 
+
 /**
- *  Modifies ids of elements which are used in bookmark-related functions
+ *  Modifies elements which are used in bookmark-related functions
  */
 function changeUiForBookmarksMode ()
 {
@@ -63,5 +91,27 @@ function changeUiForBookmarksMode ()
         sort.removeChild(childToRemove);
     }
 
+    // Replace #mode text and retrigger animation
+    var modeText = document.getElementById('mode');
+    modeText.innerHTML = "Bookmarks";
+
+    // Retrigger
+    var clone = document.getElementById("mode").cloneNode(true);
+    var header = document.getElementById("header");
+    header.replaceChild (clone,document.getElementById("mode"));
+
     //TODO: add bookmark import buttons
+}
+
+
+/**
+ *  Deletes all UI nodes children of history_item_view
+ */
+function deleteHistoryViewItems()
+{
+    var parentNode = document.getElementById("history_item_view");
+    while (parentNode.firstChild)
+    {
+        parentNode.removeChild(parentNode.firstChild);
+    }
 }

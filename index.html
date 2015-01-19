@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="shortcut icon" type="image/png" href="favicon.png"/>
+
 	<link rel="stylesheet" type="text/css" href="stylesheets/main.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/scrollbar.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/controls.css">
@@ -21,7 +23,9 @@
 	<script src="js/history/historyLoader.js"></script>
 	<script src="js/bookmarks/bookmarkLoader.js"></script>
 	<script src="js/history/sortingFilters.js"></script>
+	<script src="js/bookmarks/bookmarkSortingFilters.js"></script>
 	<script src="js/history/deleteHistory.js"></script>
+	<script src="js/bookmarks/deleteBookmarks.js"></script>
 
 	<script src="js/bookmarHistorySwitch.js"></script>
 
@@ -33,7 +37,11 @@
 </head>
 
 <body>
-	<header id="header"></header>
+	<header id="header">
+		<span id="mode">
+			History
+		</span>
+	</header>
 
 	<div id="content">
 

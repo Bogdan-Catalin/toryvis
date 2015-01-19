@@ -43,7 +43,7 @@ function loadHistoryItems(sortFunction,searchString) {
             mainNode.id = page.id;
             mainNode.className = 'history_item_container';
 
-            // Create nodes with browsing detail
+            // Add favicon
             var faviconNode = document.createElement('img');
             faviconNode.src = faviconUrl;
             faviconNode.className = "historyFavicon";

@@ -6,6 +6,9 @@ $(document).ready(function() {
     // TODO: save filter/search/mode(bookmark/history) values in cookies and restore them when reopening window
 
     loadHistoryItems(descCompareHistoryDate,'');
+
+    // Add event for bookmark switch
+    $('#switchHistoryBookmarks').on("click",switchBookmarkHistory);
 });
 
 
@@ -14,8 +17,20 @@ $(document).ready(function() {
  */
 function attachHistoryEvents ()
 {
-    // TODO: Remove bookmark events
+    // Deactivate bookmark events
+    // Delete button function
+    $("#deleteButton").off ("click",deleteBookmarkItems);
 
+    // Dropdown functions
+    $("#dateOrVisits").off ("change",sortBookmarkItems);
+    $("#ascOrDesc").off ("change",sortBookmarkItems);
+
+    // Event for searching
+    $("#searchButton").off ("click",sortBookmarkItems);
+
+
+    
+    // Activate history events
     // Dropdown functions
     $("#dateOrVisits").on ("change",sortHistoryItems);
     $("#ascOrDesc").on ("change",sortHistoryItems);
@@ -25,13 +40,11 @@ function attachHistoryEvents ()
 
     // Delete button function
     $("#deleteButton").on ("click",deleteHistoryItems);
-
-    // Add event for bookmark switch
-    $('#switchHistoryBookmarks').on("click",switchBookmarkHistory);
 }
 
 function attachBookmarkEvents ()
 {
+    // Deactivate history events
     // Dropdown functions
     $("#dateOrVisits").off ("change",sortHistoryItems);
     $("#ascOrDesc").off ("change",sortHistoryItems);
@@ -42,8 +55,16 @@ function attachBookmarkEvents ()
     // Delete button function
     $("#deleteButton").off ("click",deleteHistoryItems);
 
-    // Add event for bookmark switch
-    $('#switchHistoryBookmarks').off("click",switchBookmarkHistory);
 
-    // TODO: add bookmark events
+
+    // Activate bookmark events
+    // Delete button function
+    $("#deleteButton").on ("click",deleteBookmarkItems);
+
+    // Dropdown functions
+    $("#dateOrVisits").on ("change",sortBookmarkItems);
+    $("#ascOrDesc").on ("change",sortBookmarkItems);
+
+    // Event for searching
+    $("#searchButton").on ("click",sortBookmarkItems);
 }

@@ -1,7 +1,7 @@
 /**
- *  Rearranges history items when selected anything from the dropdown boxes.
+ *  Rearranges bookmark items when selected anything from the dropdown boxes.
  */
-function sortHistoryItems () {
+function sortBookmarkItems () {
     var dropDown = document.getElementById("dateOrVisits");
     var option = dropDown.options[dropDown.selectedIndex].text;
 
@@ -17,11 +17,11 @@ function sortHistoryItems () {
         deleteHistoryViewItems();
         if (criteria.indexOf('Descending') > -1)
         {
-            loadHistoryItems(descCompareHistoryDate,searchString);
+            loadBookmarkItems(descCompareBookmarkDate,searchString);
         }
         else
         {
-            loadHistoryItems(ascCompareHistoryDate,searchString);
+            loadBookmarkItems(ascCompareBookmarkDate,searchString);
         }
     }
     if (option.indexOf('Most') > -1)
@@ -30,11 +30,11 @@ function sortHistoryItems () {
         deleteHistoryViewItems();
         if (criteria.indexOf('Descending') > -1)
         {
-            loadHistoryItems(descCompareHistoryVisits,searchString);
+            loadBookmarkItems(descCompareHistoryVisits,searchString);
         }
         else
         {
-            loadHistoryItems(ascCompareHistoryVisits,searchString);
+            loadBookmarkItems(ascCompareHistoryVisits,searchString);
         }
     }
 }
