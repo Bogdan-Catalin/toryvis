@@ -25,6 +25,10 @@ html, body
 
 	overflow: hidden;
 	background-color: #316262;
+
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
 *
@@ -67,12 +71,22 @@ html, body
 	display: inline-block;
 	background-color: #316262;
 }
-#search_not_found
+
+#no_browsing_data
 {
 	position: absolute;
 	top: 20%;
-	left: 70%;
-	color: darkred;
+	left: 10%;
+	color: lightseagreen;
 	font-family: openSansBold;
-	font-size: 1.5rem;
+	font-size: 3rem;
+	text-shadow: 0px 1px 1px #4d4d4d;
+
+	-webkit-user-select: none; /* Chrome/Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+
+	/* Rules below not implemented in browsers yet */
+	-o-user-select: none;
+	user-select: none;
 }

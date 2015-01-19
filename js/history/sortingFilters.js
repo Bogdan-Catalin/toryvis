@@ -1,8 +1,6 @@
-$(document).ready(function() {
-    $("#dateOrVisits").change(sortHistoryItems);
-    $("#ascOrDesc").change(sortHistoryItems);
-});
-
+/**
+ *  Rearranges history items when selected anything from the dropdown boxes.
+ */
 function sortHistoryItems () {
     var dropDown = document.getElementById("dateOrVisits");
     var option = dropDown.options[dropDown.selectedIndex].text;
@@ -36,11 +34,14 @@ function sortHistoryItems () {
         }
         else
         {
-            loadHistoryItems(ascCompareHistoryDate,searchString);
+            loadHistoryItems(ascCompareHistoryVisits,searchString);
         }
     }
 }
 
+/**
+ *  Deletes all UI nodes children of history_item_view
+ */
 function deleteHistoryViewItems()
 {
     var parentNode = document.getElementById("history_item_view");
