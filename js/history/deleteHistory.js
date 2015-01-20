@@ -31,33 +31,34 @@ function deleteHistoryItems ()
 
     // Bring popup to delete selected
     if (deleteList.length>0 && deleteList.length) {
-        alertify.set({labels: {ok: "Yes", cancel: "No"}, buttonFocus: "cancel"});
         var itemString = "items";
         if (deleteList.length===1) itemString='item';
-        alertify.confirm("Are you sure you want to delete selected "+itemString+" ?", function (e) {
-            if (e) {
-                // Delete selected items;
-                deleteSelectedNodes (historyView, deleteNodes);
-                deleteUrls (deleteList);
-                alertify.success("Deleted " + deleteList.length + " " + itemString + ".");
-            } else {
-            }
-        });
+
+        alertify.confirm("Are you sure you want to delete selected "+itemString+" ?", function(){
+            // User clicked yes
+            // Delete selected items;
+            deleteSelectedNodes (historyView, deleteNodes);
+            deleteUrls (deleteList);
+            loadHistoryItems(descCompareHistoryDate,'');
+            alertify.success("Deleted " + deleteList.length + " " + itemString + ".");
+        },function(){
+            // User clicked no
+        }).setting('labels',{'ok':'Yes', 'cancel': 'No'});
     }
 
     // Bring popup to delete all history
     else {
-        alertify.set({labels: {ok: "Yes", cancel: "No"},buttonFocus: "cancel"});
-        alertify.confirm("Do you want to delete entire browsing history ?", function (e) {
-            if (e) {
-                // Delete entire web history
-                deleteAllBrowsingHistory();
-                deleteAllChildNodes(historyView);
-                loadHistoryItems(descCompareHistoryDate,'');
-                alertify.success ("Deleted your entire browsing history.")
-            } else {
-            }
-        });
+
+        alertify.confirm("Are you sure you want to delete your entire browsing history ?", function(){
+            // User clicked yes
+            // Delete entire web history
+            deleteAllBrowsingHistory();
+            deleteAllChildNodes(historyView);
+            loadHistoryItems(descCompareHistoryDate,'');
+            alertify.success("Deleted your entire browsing history.");
+        },function(){
+            // User clicked no
+        }).setting('labels',{'ok':'Yes', 'cancel': 'No'});
     }
 }
 
