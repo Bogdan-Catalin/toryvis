@@ -9,6 +9,9 @@ $(document).ready(function() {
 
     // Add event for bookmark switch
     $('#switchHistoryBookmarks').on("click",switchBookmarkHistory);
+
+    // Change alertify default title
+    alertify.defaults.glossary.title = 'Toryvis';
 });
 
 
@@ -27,9 +30,10 @@ function attachHistoryEvents ()
 
     // Event for searching
     $("#searchButton").off ("click",sortBookmarkItems);
+    $("#searchText").off ("input", sortBookmarkItems);
 
 
-    
+
     // Activate history events
     // Dropdown functions
     $("#dateOrVisits").on ("change",sortHistoryItems);
@@ -40,6 +44,7 @@ function attachHistoryEvents ()
 
     // Delete button function
     $("#deleteButton").on ("click",deleteHistoryItems);
+    $("#searchText").on ("input", sortHistoryItems);
 }
 
 function attachBookmarkEvents ()
@@ -54,6 +59,7 @@ function attachBookmarkEvents ()
 
     // Delete button function
     $("#deleteButton").off ("click",deleteHistoryItems);
+    $("#searchText").off ("input", sortHistoryItems);
 
 
 
@@ -67,4 +73,5 @@ function attachBookmarkEvents ()
 
     // Event for searching
     $("#searchButton").on ("click",sortBookmarkItems);
+    $("#searchText").on ("input", sortBookmarkItems);
 }
