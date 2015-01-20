@@ -1,6 +1,85 @@
 function importBookmarksFromPocket ()
 {
-    // TODO: popup dialog for user to input username and password
+    // Obtain a request token for OAuth
+    var consKey = "36904-a72c7f1c0b93f3c51e4ceb39";
+    pocketRequestTokenPhase (consKey);
+
+    // TODO: get user and pass and attempt to connect to Pocket
+}
+
+/**
+ *
+ * @param consumerKey Consumer key for Pocket app.
+ */
+function pocketRequestTokenPhase (consumerKey)
+{
+    // Form post request to pocket
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5, although this will only be used on chrome
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    // Callback to page app
+    // App page
+    // var callbackUri = 'http://getpocket.com/developer/app/36904/a72c7f1c0b93f3c51e4ceb39';
+
+    // Extension
+    var callbackUrl = window.location.origin+"/pocket_request.html";
+
+    // Process state of request
+    xmlhttp.onreadystatechange = function() {
+        // Success
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            // Extract token from string
+            var token = xmlhttp.responseText.slice('5');
+
+            // Iframe method not very responsive
+            //alertifyPocketPopup(token);
+
+            // New window method
+            var pocketWindowUrl = 'https://getpocket.com/auth/authorize?request_token='+token+'&redirect_uri='+callbackUrl;
+            var win = window.open(pocketWindowUrl, '_blank');
+            win.focus();
+        }
+
+        else if (xmlhttp.readyState == 4 && xmlhttp.status == 400)
+        {
+            // 2 possible errors. Will be treated the same way Invalid Consumer key is
+            alertify.closeAll();
+            alertify.alert('If you got this error message, please contact the developers team of Toryvis !');
+        }
+        // Invalid consumer key
+        else if (xmlhttp.readyState == 4 && xmlhttp.status == 403)
+        {
+            alertify.closeAll();
+            alertify.alert('If you got this error message, please contact the developers team of Toryvis !');
+        }
+
+        // Server side issues
+        else if (xmlhttp.readyState == 4 && xmlhttp.status/10==50)
+        {
+            alertify.closeAll();
+            alertify.alert('Pocket is having some server issues.<br>Please try again later !');
+        }
+
+    }
+
+    xmlhttp.open("POST","https://getpocket.com/v3/oauth/request/",true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded; charset=UTF-8");
+    xmlhttp.setRequestHeader("X-Accept", "application/x-www-form-urlencoded");
+    xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+    var parameters = "consumer_key="+consumerKey+"&redirect_uri="+callbackUrl;
+
+    xmlhttp.send(parameters);
+}
+
+function alertifyPocketPopup (requestToken)
+{
+    // Popup dialog for user to input username and password
     alertify.genericDialog || alertify.dialog('genericDialog',function(){
         return {
             main:function(content){
@@ -28,46 +107,6 @@ function importBookmarksFromPocket ()
         };
     });
 
-    var loginHtml = '<form id="loginForm"><fieldset><label> Username </label><input type="text" value="Username"/><label> Password </label><input type="password" value="password"/><input id="loginButton" type="submit" value="Login"/></fieldset></form>';
-    alertify.genericDialog (loginHtml);
-
-    $('#loginButton').on ('click', function(){
-        var form = document.getElementById('loginForm');
-        // First disable inputs
-        form.childNodes[0].disabled='disabled';
-        form.childNodes[0].childNodes[4].value='Authenticating...';
-
-        var usernameText = form.childNodes[0].childNodes[1].value;
-        var passwordText = form.childNodes[0].childNodes[3].value;
-
-        console.log (usernameText);
-        console.log (passwordText);
-
-        document.getElementsByClassName('ajs-commands')[0].style.visibility="hidden";
-
-        // Form post request to pocket
-        var xmlhttp;
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-
-        xmlhttp.open("POST","https://getpocket.com/v3/oauth/request/",true);
-        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded; charset=UTF-8");
-        xmlhttp.setRequestHeader("X-Accept", "application/x-www-form-urlencoded");
-        xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
-        var key = "36904-a72c7f1c0b93f3c51e4ceb39";
-        var parameters = "consumer_key="+key+"&redirect_uri=pocketapp1234:authorizationFinished";
-
-        xmlhttp.send(parameters);
-
-        console.log ('sent request');
-        //alertify.closeAll();
-    })
-
-    document.getElementsByClassName('ajs-commands')[0].style.visibility="visible";
-    // TODO: get user and pass and attempt to connect to Pocket
+    var loginHtml = '<iframe id="pocketIframe" src="https://getpocket.com/auth/authorize?request_token='+requestToken+'&redirect_uri=pocketapp1234:authorizationFinished" >';
+    alertify.genericDialog (loginHtml).set('resizable',true).resizeTo(500, 500);
 }
