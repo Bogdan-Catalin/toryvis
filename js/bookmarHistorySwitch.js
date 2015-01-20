@@ -70,6 +70,9 @@ function changeUiForHistoryMode ()
     header.replaceChild (clone,document.getElementById("mode"));
 
     //TODO: remove bookmark import buttons
+    // Pocket
+    var pocketLi = document.getElementById('pocketLi');
+    document.getElementById('button_list').removeChild(pocketLi);
 }
 
 
@@ -101,6 +104,23 @@ function changeUiForBookmarksMode ()
     header.replaceChild (clone,document.getElementById("mode"));
 
     //TODO: add bookmark import buttons
+    var pocketLi = document.createElement('li');
+    pocketLi.id='pocketLi';
+    var pocketButton = document.createElement('a');
+    pocketButton.id="pocketImport";
+    pocketButton.href='#';
+    pocketButton.className='main_button';
+    // now add pocket favicon
+    var pocketImage = document.createElement('img');
+    pocketImage.id = "pocketImage";
+    pocketImage.src = "resources/pictures/pocketFavicon.png";
+    pocketButton.appendChild(pocketImage);
+    pocketButton.innerHTML=pocketButton.innerHTML+'Import from Pocket';
+    pocketLi.appendChild(pocketButton);
+    document.getElementById('button_list').appendChild(pocketLi);
+
+    // Attach import functions here, because buttons will be destroyed each time
+    $('#pocketImport').on ("click", importBookmarksFromPocket);
 }
 
 

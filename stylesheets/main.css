@@ -130,3 +130,70 @@ html, body
 	-o-user-select: none;
 	user-select: none;
 }
+
+#pocketImage
+{
+	position: relative;
+	left: -5px;
+	top: 3%;
+	max-width: 10%;
+}
+
+#pocketLi
+{
+	-webkit-animation-name: pocketAnim;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes pocketAnim
+{
+	0% {
+		-webkit-transform:translateY(-100%);
+		opacity: 0;
+	}
+	5% {
+		-webkit-transform:translateY(-100%);
+		opacity: 0;
+	}
+	15% {
+		-webkit-transform:translateY(0);
+		padding-bottom: 5px;
+	}
+	30% {
+		-webkit-transform:translateY(-50%);
+	}
+	40% {
+		-webkit-transform:translateY(0%);
+		padding-bottom: 6px;
+	}
+	50% {
+		-webkit-transform:translateY(-30%);
+	}
+	70% {
+		-webkit-transform:translateY(0%);
+		padding-bottom: 7px;
+	}
+	80% {
+		-webkit-transform:translateY(-15%);
+	}
+	90% {
+		-webkit-transform:translateY(0%);
+		padding-bottom: 8px;
+	}
+	95% {
+		-webkit-transform:translateY(-10%);
+	}
+	97% {
+		-webkit-transform:translateY(0%);
+		padding-bottom: 9px;
+	}
+	99% {
+		-webkit-transform:translateY(-5%);
+	}
+	100% {
+		-webkit-transform:translateY(0);
+		padding-bottom: 9px;
+		opacity: 1;
+	}
+}

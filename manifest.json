@@ -10,7 +10,9 @@
     "bookmarks",
 	"history",
 	"tabs",
-    "chrome://favicon/*"
+    "chrome://favicon/*",
+    "https://getpocket.com/*",
+    "http://getpocket.com/*"
   ],
   
   "browser_action": {
