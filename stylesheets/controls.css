@@ -90,6 +90,8 @@
     -o-background-size: cover;
     background-size: cover;
 
+    visibility: hidden;
+
     position:relative;
     padding: 6px 15px;
     top: 5px;
