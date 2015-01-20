@@ -14,6 +14,10 @@
     "https://getpocket.com/*",
     "http://getpocket.com/*"
   ],
+
+  "web_accessible_resources": [
+    "pocket_request.html"
+  ],
   
   "browser_action": {
       "default_title": "toryvis",
