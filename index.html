@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
 	<link rel="shortcut icon" type="image/png" href="favicon.ico"/>
 
 	<link rel="stylesheet" type="text/css" href="stylesheets/main.css">
@@ -80,5 +81,82 @@
 	</div>
 
 	<footer id="footer"></footer>
+
+    <script type="application/x-template">
+        @-webkit-keyframes disapear{
+
+        0% {
+        /* Sets the initial width to the measured width of the element */
+        width: {{width}};
+        }
+
+        30% {
+
+        -webkit-transform: translateY(-5%);
+        transform: translateY(-5%);
+        }
+
+        60% {
+        -webkit-transform: translateY(200%);
+        transform: translateY(200%);
+
+        /* Makes sur the width and bottom margin stay constant
+        till this point in the animation */
+        width: {{width}};
+        margin-bottom: 1em;
+        }
+
+        100% {
+
+        /* Keeps the element out of the screen. If it's not there,
+        * the element comes back to its original position
+        */
+        -webkit-transform: translateY(200%);
+        transform: translateY(200%);
+
+        /* Makes the blank space collapse */
+        width: 0;
+        margin-bottom: 0;
+        }
+        }
+
+
+        @keyframes disapear{
+
+        0% {
+        /* Sets the initial width to the measured width of the element */
+        width: {{width}};
+        }
+
+        30% {
+
+        -webkit-transform: translateY(-5%);
+        transform: translateY(-5%);
+        }
+
+        60% {
+        -webkit-transform: translateY(200%);
+        transform: translateY(200%);
+
+        /* Makes sur the width and bottom margin stay constant
+        till this point in the animation */
+        width: {{width}};
+        margin-bottom: 1em;
+        }
+
+        100% {
+
+        /* Keeps the element out of the screen. If it's not there,
+        * the element comes back to its original position
+        */
+        -webkit-transform: translateY(200%);
+        transform: translateY(200%);
+
+        /* Makes the blank space collapse */
+        width: 0;
+        margin-bottom: 0;
+        }
+        }
+    </script>
 </body>
 </html>

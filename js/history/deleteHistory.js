@@ -65,7 +65,7 @@ function deleteHistoryItems ()
 
 /**
  * This function removes children at specified indexes from given
- * parent node with a fadeOut effect.
+ * parent node with an animation effect.
  *
  * @param parentNode Node whose children will be deleted.
  * @param nodeIndexList List of indexes of children to be deleted.
@@ -74,9 +74,40 @@ function deleteSelectedNodes (parentNode, nodeIndexList)
 {
     for (var i=nodeIndexList.length-1 ; i>=0 ; i--)
     {
+        // To be replaced with cool animation
+        /*
         $("#"+parentNode.childNodes[nodeIndexList[i]].id).fadeOut(1000, 'linear', function() {
             $(this).remove();
         });
+        */
+
+        var currentNode = parentNode.childNodes[nodeIndexList[i]];
+
+        insertKeyframes(currentNode.clientWidth);
+        currentNode.classList.add('removed');
+    }
+}
+
+function insertKeyframes(height)
+{
+    // Used to dynamically generate keyframe animation
+    var keyframesTemplate = document.querySelector('[type^=application]').textContent;
+    var replacementPattern = /\{\{width\}\}/g;
+
+    var styleElement = document.createElement('style');
+    styleElement.textContent = keyframesTemplate.replace(replacementPattern, height + 'px');
+    document.head.appendChild(styleElement);
+}
+
+
+/**
+ *  Triggered by end of animation.
+ */
+function removeElement (event)
+{
+    if (event.animationName === 'disapear')
+    {
+        event.target.parentNode.removeChild(event.target);
     }
 }
 
@@ -109,7 +140,11 @@ function deleteAllBrowsingHistory () {
  * @param parentNode Self explanatory.
  */
 function deleteAllChildNodes (parentNode) {
-    while (parentNode.firstChild) {
-        parentNode.removeChild(parentNode.firstChild);
+    for (var i=1 ; i<parentNode.childNodes.length ; i++)
+    {
+        var currentNode = parentNode.childNodes[i];
+
+        insertKeyframes(currentNode.clientWidth);
+        currentNode.classList.add('removed');
     }
 }

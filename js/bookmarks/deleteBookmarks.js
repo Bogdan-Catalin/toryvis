@@ -25,8 +25,6 @@ function deleteBookmarkItems ()
         }
     }
 
-    console.log (deleteList);
-
     // Bring popup to delete selected
     if (deleteList.length>0 && deleteList.length) {
         var itemString = "items";
@@ -47,6 +45,7 @@ function deleteBookmarkItems ()
     // Bring popup to delete all bookmarks
     else {
         alertify.error ("You did not chose any bookmarks to delete !");
+
         /* // I don't think it's wise to have a "delete all bookmarks" option, but I'm leaving my options open.
         alertify.set({labels: {ok: "Yes", cancel: "No"},buttonFocus: "cancel"});
         alertify.confirm("Do you want to delete entire browsing history ?", function (e) {

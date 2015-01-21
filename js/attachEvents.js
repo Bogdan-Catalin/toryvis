@@ -3,7 +3,7 @@ $(document).ready(function() {
     attachHistoryEvents();
 
     // And also load history UI components
-    // TODO: save filter/search/mode(bookmark/history) values in cookies and restore them when reopening window
+    // TODO: save filter/search/mode(bookmark/history) values in cookies and restore them here
 
     loadHistoryItems(descCompareHistoryDate,'');
 
@@ -12,6 +12,11 @@ $(document).ready(function() {
 
     // Change alertify default title
     alertify.defaults.glossary.title = 'Toryvis';
+
+
+    // Used to smoothen animations by calling removeElement
+    // when animations are complete.
+    document.body.addEventListener('webkitAnimationEnd', removeElement);
 });
 
 

@@ -153,3 +153,24 @@ input[type=checkbox]:checked::after {
     -webkit-box-shadow: -1px 1px 0 rgba(0,0,0,0.8);
     -webkit-transform: rotate(-45deg);
 }
+
+.removed
+{
+    -webkit-animation: disapear 1s;
+    -webkit-animation-fill-mode: forwards;
+    animation: disapear 1s;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes disapear{
+    50% {
+
+        -webkit-transform: translateY(-5%);
+        transform: translateY(-5%);
+    }
+
+    100% {
+        -webkit-transform: translateY(200%);
+        transform: translateY(200%);
+    }
+}
