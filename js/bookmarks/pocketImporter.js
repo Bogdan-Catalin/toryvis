@@ -37,6 +37,9 @@ function pocketRequestTokenPhase (consumerKey)
             // Extract token from string
             var token = xmlhttp.responseText.slice('5');
 
+            // Put token in a cookie to be retrieved in the callback
+            document.cookie="code="+token;
+
             // Iframe method not very responsive
             //alertifyPocketPopup(token);
 
