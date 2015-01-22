@@ -40,12 +40,10 @@ function pocketRequestTokenPhase (consumerKey)
             // Put token in a cookie to be retrieved in the callback
             document.cookie="code="+token;
 
-            // Iframe method not very responsive
-            //alertifyPocketPopup(token);
-
             // New window method
             var pocketWindowUrl = 'https://getpocket.com/auth/authorize?request_token='+token+'&redirect_uri='+callbackUrl;
-            var win = window.open(pocketWindowUrl, '_blank');
+            var win = window.open(pocketWindowUrl, "_blank", "width=600, height=800");
+            //var win = window.open(pocketWindowUrl,  "_blank");
             win.focus();
         }
 
