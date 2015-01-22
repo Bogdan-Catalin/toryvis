@@ -6,13 +6,12 @@
  */
 function loadHistoryItems(sortFunction,searchString) {
     chrome.history.search({text: searchString, maxResults: 10000}, function (data) {
-        var errorNode = document.getElementById('no_browsing_data');
         if (data.length == 0)
         {
             // If there is no browsing data available
             if (!searchString || searchString.length === 0 )
             {
-                errorNode.innerHTML="Your browsing history is empty.<br>Please start browsing the internet.";
+                animateErrorNode("Your browsing history is empty.<br>Please start browsing the internet.");
             }
 
             // There is browsing data available, but given string returned 0 results
@@ -25,7 +24,7 @@ function loadHistoryItems(sortFunction,searchString) {
 
         else
         {
-            errorNode.innerHTML="";
+            animateErrorNode("");
         }
 
         // Sort data by criteria

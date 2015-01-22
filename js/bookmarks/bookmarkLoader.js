@@ -7,7 +7,6 @@
 function loadBookmarkItems (sortFunction, searchString)
 {
     chrome.bookmarks.getRecent(100000, function (data){
-
         // Sort data using provided function
         data.sort (sortFunction);
 
@@ -15,13 +14,12 @@ function loadBookmarkItems (sortFunction, searchString)
         data = filterByString(data, searchString);
 
         // Verify if results available
-        var errorNode = document.getElementById('no_browsing_data');
         if (data.length == 0)
         {
             // If there is no browsing data available
             if (!searchString || searchString.length === 0 )
             {
-                errorNode.innerHTML="You have no bookmarks.<br>Please add some.";
+                animateErrorNode ("You have no bookmarks.<br>Please add some.")
             }
 
             // There are bookmarks, but given string returned 0 results
@@ -33,7 +31,7 @@ function loadBookmarkItems (sortFunction, searchString)
         }
         else
         {
-            errorNode.innerHTML="";
+            animateErrorNode("");
         }
 
         // Create nodes
@@ -157,4 +155,18 @@ function ascCompareBookmarkDate(a,b) {
     if (a.dateAdded > b.dateAdded)
         return 1;
     return 0;
+}
+
+/**
+ * Animates #no_browsing_data with the specified message
+ */
+function animateErrorNode (message)
+{
+    var parent = document.getElementById('content');
+    var errorNode = document.getElementById('no_browsing_data');
+    var errorNodeClone = document.getElementById('no_browsing_data').cloneNode(true);
+    errorNodeClone.innerHTML=message;
+    parent.removeChild(errorNode);
+
+    parent.appendChild(errorNodeClone);
 }
