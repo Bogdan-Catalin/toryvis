@@ -64,13 +64,171 @@ $(document).ready(function(){
 
     // TODO: save consumer keys to a server and retrieve them from there
     var consKey = "36904-a72c7f1c0b93f3c51e4ceb39";
+    var code = getCookie("code");
 
+    // Form post request to pocket
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
 
+    xmlhttp.onreadystatechange = processStateChange;
+
+    // Now form headers
+    xmlhttp.open("POST","https://getpocket.com/v3/oauth/authorize",true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded; charset=UTF-8");
+    xmlhttp.setRequestHeader("X-Accept", "application/json");
+    xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+
+    var parameters = "consumer_key="+consKey+"&code="+code;
+    xmlhttp.send(parameters);
 })
 
+
+/**
+ *  CallBack when request state changes.
+ */
+function processStateChange ()
+{
+    // On success
+    if (this.readyState == 4)
+    {
+        if (this.status == 200)
+        {
+            var data = this.responseText;
+            var jsonParse = JSON.parse(data);
+            var accessToken = jsonParse["access_token"];
+            var username = jsonParse["username"];
+
+            // Now form request for the bloody bookmarks
+            var consKey = "36904-a72c7f1c0b93f3c51e4ceb39";
+            retrieveBookmarks(consKey,accessToken);
+        }
+
+        // Missing consumer key or code
+        else if (this.status == 400)
+        {
+            alertifyError ('If you are getting this message, please contact our dev team right away !');
+        }
+
+        // User rejected code
+        else if (this.status == 403)
+        {
+            if (this.getResponseHeader("X-Error-Code") == 158)
+                alertifyError('It seems you refused to authorize our app to retrieve your bookmarks :(');
+            else alertifyError("Sorry, but we couldn't import your bookmarks.<br>Please try again later.")
+        }
+        // Server issues
+        else if (this.status/10 == 50)
+        {
+            alertifyError('Sorry, but Pocket is having trouble with their dang-daddly-diddly serverinos.')
+        }
+    }
+}
+
+
+/**
+ * Extracts string from cookie on a key=value pair basis.
+ *
+ * @param name key
+ * @returns {*} value
+ */
 function getCookie(name)
 {
     var re = new RegExp(name + "=([^;]+)");
     var value = re.exec(document.cookie);
     return (value != null) ? unescape(value[1]) : null;
+}
+
+
+/**
+ * Triggers an alertify popup for error messages.
+ *
+ * @param message String to be shown in alertify message.
+ */
+function alertifyError (message)
+{
+    alertify.closeAll();
+    alertify.alert()
+        .setting({
+            'closable':false,
+            'message': message,
+            'onok': function()
+            {
+                // Close current window
+                window.close();
+            }
+        }).show();
+}
+
+function retrieveBookmarks (consumer_key, access_token)
+{
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = stateChangeRetrieve;
+
+    // Now form headers
+    xmlhttp.open("POST","https://getpocket.com/v3/get",true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded; charset=UTF-8");
+    xmlhttp.setRequestHeader("X-Accept", "application/json");
+
+    var retrieveNumber = 10000;
+    var parameters =
+        "consumer_key="+consumer_key+
+        "&access_token="+access_token+
+        "&count="+retrieveNumber;
+    xmlhttp.send(parameters);
+}
+
+/**
+ *  More redundant code to process state changes for retrieval operations.
+ *  I really have to modularize and reformat this code >_<.
+ */
+function stateChangeRetrieve ()
+{
+    // On success
+    if (this.readyState == 4)
+    {
+        if (this.status == 200)
+        {
+            var data = this.responseText;
+            var jsonParse = JSON.parse(data);
+
+            var bookmarkList = jsonParse.list;
+
+            // Save to local storage and it will be processed in main window
+            // In case item was stuck there, unstuck it
+            localStorage.removeItem('imported_bookmarks');
+
+            localStorage.setItem ('imported_bookmarks',JSON.stringify(bookmarkList));
+
+            alertifyError('Successfully imported bookmarks !');
+        }
+
+        // Missing consumer key or code
+        else if (this.status == 400)
+        {
+            alertifyError ('If you are getting this message, please contact our dev team right away !');
+        }
+
+        // User rejected code
+        else if (this.status == 403)
+        {
+            if (this.getResponseHeader("X-Error-Code") == 158)
+                alertifyError('It seems you refused to authorize our app to retrieve your bookmarks :(');
+            // Request token expired
+            else alertifyError("Sorry, but we couldn't import your bookmarks.<br>Please try again later.")
+        }
+        // Server issues
+        else if (this.status/10 == 50)
+        {
+            alertifyError('Sorry, but Pocket is having trouble with their dang-daddly-diddly serverinos.')
+        }
+    }
 }
