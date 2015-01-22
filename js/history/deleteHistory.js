@@ -39,7 +39,7 @@ function deleteHistoryItems ()
             // Delete selected items;
             deleteSelectedNodes (historyView, deleteNodes);
             deleteUrls (deleteList);
-            loadHistoryItems(descCompareHistoryDate,'');
+            //loadHistoryItems(descCompareHistoryDate,'');
             alertify.success("Deleted " + deleteList.length + " " + itemString + ".");
         },function(){
             // User clicked no

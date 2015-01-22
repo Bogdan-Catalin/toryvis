@@ -22,6 +22,12 @@ function switchBookmarkHistory ()
 
         // Change UI to Bookmark mode
         changeUiForBookmarksMode();
+
+        // Save mode to cookies
+        var d = new Date();
+        d.setTime(d.getTime() + (365*24*60*60*1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = "mode=bookmarks; "+expires;
     }
 
     // History Mode
@@ -40,6 +46,13 @@ function switchBookmarkHistory ()
 
         // Change UI to History Mode
         changeUiForHistoryMode();
+
+        // Save mode to cookies
+        // set expiry date
+        var d = new Date();
+        d.setTime(d.getTime() + (365*24*60*60*1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = "mode=history; "+expires;
     }
 }
 
@@ -103,12 +116,11 @@ function changeUiForBookmarksMode ()
     var header = document.getElementById("header");
     header.replaceChild (clone,document.getElementById("mode"));
 
-    //TODO: add bookmark import buttons
+    // Import button for Pocket
     var pocketLi = document.createElement('li');
     pocketLi.id='pocketLi';
     var pocketButton = document.createElement('a');
     pocketButton.id="pocketImport";
-    pocketButton.href='#';
     pocketButton.className='main_button';
     // now add pocket favicon
     var pocketImage = document.createElement('img');

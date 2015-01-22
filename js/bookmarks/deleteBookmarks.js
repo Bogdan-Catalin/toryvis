@@ -35,7 +35,7 @@ function deleteBookmarkItems ()
             // Delete selected items;
             deleteSelectedNodes (historyView, deleteNodes);
             deleteBookmarks (deleteList);
-            loadBookmarkItems (descCompareBookmarkDate, '');
+            //loadBookmarkItems (descCompareBookmarkDate, '');
             alertify.success("Deleted " + deleteList.length + " " + itemString + ".");
         },function(){
             // User clicked no
