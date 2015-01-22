@@ -7,9 +7,10 @@
   },
   
   "permissions": [
+    "cookies",
     "bookmarks",
 	"history",
-	"tabs",
+
     "chrome://favicon/*",
     "https://getpocket.com/*",
     "http://getpocket.com/*"

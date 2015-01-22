@@ -33,6 +33,14 @@
 .main_button:hover
 {
     background-color: #444688;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.delete_button:hover
+{
+    cursor: pointer;
+    cursor: hand;
 }
 
 .delete_button

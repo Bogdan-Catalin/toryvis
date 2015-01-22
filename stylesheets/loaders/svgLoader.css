@@ -4,14 +4,18 @@
     src: url("../../resources/fonts/open_sans/OpenSans-Regular.ttf");
 }
 
+body
+{
+    font-family: openSansRegular;
+    font-size: 1rem;
+}
+
 #loadingText
 {
-    font-size: 1rem;
     margin: auto;
     position: absolute;
     left: 35%;
     top: 40%;
-    font-family: openSansRegular;
 }
 
 svg
