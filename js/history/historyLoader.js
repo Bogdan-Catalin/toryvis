@@ -30,8 +30,16 @@ function loadHistoryItems(sortFunction,searchString) {
         // Sort data by criteria
         data.sort (sortFunction);
 
+        var limitPerLoad=10;
+        // See how many items were loaded
+        var historyContainer = document.getElementById('history_item_view');
+        var addedCount = historyContainer.childNodes.length;
+
         // Create nodes for each URL
-        data.forEach(function (page) {
+        for (var i=addedCount ; i<data.length && i<(addedCount+limitPerLoad) ; i++) {
+
+            var page = data[i];
+
             // Get favicon url
             var faviconUrl = 'chrome://favicon/' + page.url;
 
@@ -101,7 +109,7 @@ function loadHistoryItems(sortFunction,searchString) {
 
             // Append to container
             document.getElementById('history_item_view').appendChild(mainNode);
-        });
+        }
     });
 }
 

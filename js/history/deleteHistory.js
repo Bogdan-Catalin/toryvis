@@ -74,7 +74,7 @@ function deleteSelectedNodes (parentNode, nodeIndexList)
 {
     for (var i=nodeIndexList.length-1 ; i>=0 ; i--)
     {
-        // To be replaced with cool animation
+        // Old JQuery fadeOut animation. Should replace with this one instead if client has a machine with low resources
         /*
         $("#"+parentNode.childNodes[nodeIndexList[i]].id).fadeOut(1000, 'linear', function() {
             $(this).remove();

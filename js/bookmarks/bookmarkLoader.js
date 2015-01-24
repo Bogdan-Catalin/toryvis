@@ -34,8 +34,15 @@ function loadBookmarkItems (sortFunction, searchString)
             animateErrorNode("");
         }
 
+        var limitPerLoad=10;
+        // See how many items were loaded
+        var historyContainer = document.getElementById('history_item_view');
+        var addedCount = historyContainer.childNodes.length;
+
         // Create nodes
-        data.forEach(function (page) {
+        for (var i=addedCount ; i<data.length && i<(addedCount+limitPerLoad) ; i++)
+        {
+            var page = data[i];
             // Get favicon url
             var faviconUrl = 'chrome://favicon/' + page.url;
 
@@ -114,7 +121,7 @@ function loadBookmarkItems (sortFunction, searchString)
 
             // Append to container
             document.getElementById('history_item_view').appendChild(mainNode);
-        });
+        }
     })
 }
 
