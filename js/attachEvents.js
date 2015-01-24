@@ -46,6 +46,9 @@ $(document).ready(function() {
     // extracted bookmarks will be stored using the local storage,
     // then processed through the Bookmark API, and the deleted
     $(window).on('storage', changedLocalStorage);
+
+    // Event for scrollbar: load up more history/bookmark "cards"
+    $('#history_item_view').on('scroll', handleScroll);
 });
 
 /**
@@ -109,6 +112,10 @@ function attachBookmarkEvents ()
     $("#searchText").on ("keyup", onSearchKeyUpBookmarks);
 }
 
+/**
+ *  Key event fired when typing something in the search bar.
+ *  If user presses enter, a search is being made.
+ */
 function onSearchKeyUpBookmarks (e)
 {
     if (e.keyCode ==13)
