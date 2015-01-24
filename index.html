@@ -31,6 +31,7 @@
 	<script src="js/history/deleteHistory.js"></script>
 	<script src="js/bookmarks/deleteBookmarks.js"></script>
     <script src="js/localStorageChangeCallback.js"></script>
+    <script src="js/scrollHandler.js"></script>
 
 	<script src="js/bookmarkHistorySwitch.js"></script>
 
@@ -38,6 +39,48 @@
 	<script src="js/bookmarks/pocketImporter.js"></script>
 
 	<link rel="icon" type="image/png" href="icon.png">
+
+    <!--This animation will be injected when deleting an element, using js-->
+    <script type="application/x-template">
+        @-webkit-keyframes disapear
+        {
+        0%
+        {
+        /* Sets the initial width to the measured width of the element */
+        width: {{width}};
+        }
+
+        30%
+        {
+        -webkit-transform: translateY(-5%);
+        transform: translateY(-5%);
+        }
+
+        60%
+        {
+        -webkit-transform: translateY(200%);
+        transform: translateY(200%);
+
+        /* Makes sur the width and bottom margin stay constant
+        till this point in the animation */
+        width: {{width}};
+        margin-bottom: 1em;
+        }
+
+        100%
+        {
+        /* Keeps the element out of the screen. If it's not there,
+        * the element comes back to its original position
+        */
+        -webkit-transform: translateY(200%);
+        transform: translateY(200%);
+
+        /* Makes the blank space collapse */
+        width: 0;
+        margin-bottom: 0;
+        }
+        }
+    </script>
 
 	<title>toryvis</title>
 </head>
@@ -66,13 +109,12 @@
 		<span id="no_browsing_data">
 		</span>
 
-		<form id="search_box">
+		<div id="search_box">
 			<input class="search_text" id="searchText" type="text" placeholder="Search">
-			<input class="search_button" id="searchButton" type="button" value="" >
-		</form>
-
-		<div id="history_item_view">
+			<input class="search_button" id="searchButton" type="button">
 		</div>
+
+		<div id="history_item_view"></div>
 
 		<ul id="button_list">
 			<li> <a class="main_button" id="switchHistoryBookmarks">Switch to Bookmarks</a></li>
@@ -83,81 +125,6 @@
 
 	<footer id="footer"></footer>
 
-    <script type="application/x-template">
-        @-webkit-keyframes disapear{
 
-        0% {
-        /* Sets the initial width to the measured width of the element */
-        width: {{width}};
-        }
-
-        30% {
-
-        -webkit-transform: translateY(-5%);
-        transform: translateY(-5%);
-        }
-
-        60% {
-        -webkit-transform: translateY(200%);
-        transform: translateY(200%);
-
-        /* Makes sur the width and bottom margin stay constant
-        till this point in the animation */
-        width: {{width}};
-        margin-bottom: 1em;
-        }
-
-        100% {
-
-        /* Keeps the element out of the screen. If it's not there,
-        * the element comes back to its original position
-        */
-        -webkit-transform: translateY(200%);
-        transform: translateY(200%);
-
-        /* Makes the blank space collapse */
-        width: 0;
-        margin-bottom: 0;
-        }
-        }
-
-
-        @keyframes disapear{
-
-        0% {
-        /* Sets the initial width to the measured width of the element */
-        width: {{width}};
-        }
-
-        30% {
-
-        -webkit-transform: translateY(-5%);
-        transform: translateY(-5%);
-        }
-
-        60% {
-        -webkit-transform: translateY(200%);
-        transform: translateY(200%);
-
-        /* Makes sur the width and bottom margin stay constant
-        till this point in the animation */
-        width: {{width}};
-        margin-bottom: 1em;
-        }
-
-        100% {
-
-        /* Keeps the element out of the screen. If it's not there,
-        * the element comes back to its original position
-        */
-        -webkit-transform: translateY(200%);
-        transform: translateY(200%);
-
-        /* Makes the blank space collapse */
-        width: 0;
-        margin-bottom: 0;
-        }
-        }
-    </script>
 </body>
 </html>
