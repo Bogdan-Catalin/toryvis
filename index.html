@@ -32,6 +32,7 @@
 	<script src="js/bookmarks/deleteBookmarks.js"></script>
     <script src="js/localStorageChangeCallback.js"></script>
     <script src="js/scrollHandler.js"></script>
+    <script src="js/statisticsButtonHandler.js"></script>
 
 	<script src="js/bookmarkHistorySwitch.js"></script>
 
@@ -40,7 +41,7 @@
 
 	<link rel="icon" type="image/png" href="icon.png">
 
-    <!--This animation will be injected when deleting an element, using js-->
+    <!--This animation will be injected when using the delete history function, using js-->
     <script type="application/x-template">
         @-webkit-keyframes disapear
         {
@@ -66,7 +67,6 @@
         width: {{width}};
         margin-bottom: 1em;
         }
-
         100%
         {
         /* Keeps the element out of the screen. If it's not there,

@@ -1,0 +1,143 @@
+@font-face
+{
+    font-family: openSansRegular;
+    src: url("../../resources/fonts/open_sans/OpenSans-Regular.ttf");
+}
+
+@font-face
+{
+    font-family: openSansItalic;
+    src: url("../../resources/fonts/open_sans/OpenSans-Italic.ttf");
+}
+
+@font-face
+{
+    font-family: openSansBold;
+    src: url("../../resources/fonts/open_sans/OpenSans-Bold.ttf");
+}
+
+
+html, body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    overflow: hidden;
+
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+
+    text-decoration: none;
+
+    color: black;
+
+    overflow: visible;
+}
+
+*
+{
+    font-family: openSansBold;
+    font-size: 1.3rem;
+}
+
+#header
+{
+    width: 100%;
+    height: 10%;
+    margin: 0;
+}
+
+#controls
+{
+    width: 100%;
+    height: 15%;
+    margin: 0;
+
+    background-color: #ffe9aa;
+
+    position: relative;
+    z-index: 1;
+
+    text-align: center;
+
+    -webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.75);
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.75);
+}
+
+#graphics
+{
+    margin-top: 0.1%;
+    width: 100%;
+    height: 82%
+}
+
+#pie
+{
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+#footer
+{
+    width: 100%;
+    height: 10%;
+    margin: 0;
+
+    display: inline-block;
+    background-color: #316262;
+}
+
+.main_button
+{
+    font-family: openSansRegular;
+
+    width: 70px;
+    height: 40px;
+
+    margin-left: 3px;
+
+    float: left;
+    font-size: 0.7rem;
+    text-align: center;
+    text-decoration: none;
+    text-wrap: normal;
+
+    background-color: #333577;
+    line-height: 40px;
+    color: white;
+
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.main_button:hover
+{
+    background-color: #444688;
+    cursor: pointer;
+    cursor: hand;
+}
+
+
+#export_text
+{
+    float: left;
+    width: 100%;
+}
+
+#exports
+{
+    width: 100%;
+    height: 30%;
+    text-align: center;
+}
+
+#button_wrapper
+{
+    margin-left: 44%;
+}
+

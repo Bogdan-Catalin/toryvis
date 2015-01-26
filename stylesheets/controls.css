@@ -66,7 +66,7 @@
 {
     float: left;
     width: 25%;
-    height: 5%;
+    height: 15%;
 
     text-align: center;
 }
@@ -76,12 +76,19 @@
     text-align: center;
 }
 
+
+.sort_container > select
+{
+    height: 30px;
+}
+
+
 #search_box
 {
     float: right;
     margin-top: 2%;
     margin-right: 1%;
-    height: 5%;
+    height: 30px;
 }
 
 .search_text

@@ -5,6 +5,9 @@ $(document).ready(function() {
     // Add event for bookmark switch
     $('#switchHistoryBookmarks').on("click",switchBookmarkHistory);
 
+    // Add event for handling statistics
+    $('#statistics').on("click",handleStatisticsButton);
+
     if (getCookie('mode').indexOf('history') > -1)
     {
         // When loading document for the first time, attach history related events
@@ -38,7 +41,7 @@ $(document).ready(function() {
 
 
     // Used to smoothen animations by calling removeElement
-    // when animations are complete.
+    // when an animation ends.
     document.body.addEventListener('webkitAnimationEnd', removeElement);
 
 

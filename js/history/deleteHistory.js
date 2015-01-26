@@ -140,7 +140,7 @@ function deleteAllBrowsingHistory () {
  * @param parentNode Self explanatory.
  */
 function deleteAllChildNodes (parentNode) {
-    for (var i=1 ; i<parentNode.childNodes.length ; i++)
+    for (var i=0 ; i<parentNode.childNodes.length ; i++)
     {
         var currentNode = parentNode.childNodes[i];
 

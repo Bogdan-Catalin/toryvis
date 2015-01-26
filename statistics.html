@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>toryvis - statistics</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/piechart/d3.js"></script>
+    <script src="js/piechart/d3pie.js"></script>
+    <script src="js/piechart/canvg.js"></script>
+    <script src="js/statistics/events.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/statistics/main.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/customAlertBox/alertify.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/customAlertBox/themes/default.css">
+
+    <script src="js/customAlertBox/alertify.min.js"></script>
+</head>
+<body>
+
+    <div id="controls">
+        Give me statistics about
+        <select id="statistics_criteria">
+            <option value="accessed">number of visits</option>
+        </select>
+        from
+        <input id="from_date" type="date" value="1900-01-01"/>
+        to
+        <input id="to_date" type="date" value="2050-01-01">
+    </div>
+
+    <div id="graphics">
+        <div id="pie"></div>
+        <canvas id="pie_canvas" width="100" height="100"></canvas>
+        <div id="exports">
+            <span id="export_text">Export to</span>
+            <div id="button_wrapper">
+                <a class="main_button" id="svg">SVG</a>
+                <a class="main_button" id="png">PNG</a>
+                <a class="main_button" id="jpg">JPG</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

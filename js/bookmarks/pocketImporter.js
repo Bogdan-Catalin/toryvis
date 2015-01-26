@@ -3,8 +3,6 @@ function importBookmarksFromPocket ()
     // Obtain a request token for OAuth
     var consKey = "36904-a72c7f1c0b93f3c51e4ceb39";
     pocketRequestTokenPhase (consKey);
-
-    // TODO: get user and pass and attempt to connect to Pocket
 }
 
 /**

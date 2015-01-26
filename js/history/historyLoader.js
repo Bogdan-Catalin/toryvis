@@ -169,6 +169,10 @@ function formatDate (date)
     var minutes = date.getMinutes();
     var hour = date.getHours();
 
+    if (seconds<10) seconds="0"+seconds;
+    if (minutes<10) minutes="0"+minutes;
+    if (hour<10) hour="0"+hour;
+
     return (curr_date + "-" + m_names[curr_month]
     + "-" + curr_year + ", " + hour + ":" + minutes + ":" + seconds);
 }
