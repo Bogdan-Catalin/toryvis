@@ -8,6 +8,9 @@ $(document).ready(function() {
     // Add event for handling statistics
     $('#statistics').on("click",handleStatisticsButton);
 
+    // Add event for user guide
+    $('#help').on("click",sendToHelp);
+
     if (getCookie('mode').indexOf('history') > -1)
     {
         // When loading document for the first time, attach history related events
@@ -69,7 +72,7 @@ function attachHistoryEvents ()
 
     // Event for searching
     $("#searchButton").off ("keyup", onSearchKeyUpBookmarks);
-    $("#searchText").off ("input", sortBookmarkItems);
+    $("#searchText").off ("search", sortBookmarkItems);
 
 
 
@@ -83,7 +86,7 @@ function attachHistoryEvents ()
 
     // Delete button function
     $("#deleteButton").on ("click",deleteHistoryItems);
-    $("#searchText").on ("keyup", onSearchKeyUpHistory);
+    $("#searchText").on ("search", onSearchKeyUpHistory);
 }
 
 function attachBookmarkEvents ()
@@ -98,7 +101,7 @@ function attachBookmarkEvents ()
 
     // Delete button function
     $("#deleteButton").off ("click",deleteHistoryItems);
-    $("#searchText").off ("keyup", onSearchKeyUpHistory);
+    $("#searchText").off ("search", onSearchKeyUpHistory);
 
 
 
@@ -112,7 +115,7 @@ function attachBookmarkEvents ()
 
     // Event for searching
     $("#searchButton").on ("click",sortBookmarkItems);
-    $("#searchText").on ("keyup", onSearchKeyUpBookmarks);
+    $("#searchText").on ("search", onSearchKeyUpBookmarks);
 }
 
 /**
@@ -121,18 +124,12 @@ function attachBookmarkEvents ()
  */
 function onSearchKeyUpBookmarks (e)
 {
-    if (e.keyCode ==13)
-    {
-        sortBookmarkItems();
-    }
+    sortBookmarkItems();
 }
 
 function onSearchKeyUpHistory (e)
 {
-    if (e.keyCode ==13)
-    {
-        sortHistoryItems();
-    }
+    sortHistoryItems();
 }
 
 /**
@@ -146,4 +143,15 @@ function getCookie(name)
     var re = new RegExp(name + "=([^;]+)");
     var value = re.exec(document.cookie);
     return (value != null) ? unescape(value[1]) : null;
+}
+
+/**
+ *  Opens the user guide window.
+ */
+function sendToHelp ()
+{
+    console.log (document.URL);
+    var url = "doc.html";
+    //var win = window.open(url, "_blank","width=600, height=800");
+    window.open(url,"_blank");
 }
