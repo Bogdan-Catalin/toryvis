@@ -11,7 +11,7 @@ function loadHistoryItems(sortFunction,searchString) {
             // If there is no browsing data available
             if (!searchString || searchString.length === 0 )
             {
-                animateErrorNode("Your browsing history is empty.<br>Please start browsing the internet.");
+                animateErrorNode("Your browsing history is empty. Please start browsing the internet.");
             }
 
             // There is browsing data available, but given string returned 0 results

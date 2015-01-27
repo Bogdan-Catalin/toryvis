@@ -23,18 +23,18 @@
     text-decoration: none;
     text-wrap: normal;
 
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.75);
 
-    -webkit-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
 }
 
 .main_button:hover
 {
     background-color: #444688;
+    -webkit-box-shadow: 0px 4px 13px 0px rgba(50, 50, 50, 0.75);
     cursor: pointer;
     cursor: hand;
+
 }
 
 .delete_button:hover

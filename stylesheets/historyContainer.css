@@ -1,11 +1,17 @@
 #history_item_view
 {
-    width: 100%;
+    width: 95%;
+    margin-left: 2.5%;
     height: 40%;
     margin-top: 5%;
     margin-bottom: 2%;
 
+    background-color: #FFF5DB;
+
     float: left;
+
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    z-index: 7;
 
     white-space: nowrap;
     overflow-x: scroll;
@@ -16,30 +22,26 @@
     width: 300px;
     height: 85%;
     margin-top: 20px;
-    margin-left: 1.5%;
+    margin-left: 20px;
+    margin-right: 20px;
 
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(143,155,153,1);
 
     position: relative;
     display:inline-block;
     overflow: hidden;
 
-    border-radius: 25px;
-    -moz-border-radius: 25px;
-    -webkit-border-radius: 25px;
-    border: 1px solid #000000;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 
     /* Animation */
     -webkit-animation: appear 0.5s;
     -webkit-animation-fill-mode: forwards;
-    animation: appear 1s;
-    animation-fill-mode: forwards;
+    -webkit-transition: all 0.5s ease-in;
 }
 
 .history_item_container:hover
 {
-    background-color: rgba(0,0,0,0.6);
-    -webkit-transform: scale(1.1);
+    background-color: rgba(101,155,153,1);
 }
 
 .history_item_container > *

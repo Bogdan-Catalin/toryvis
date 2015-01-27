@@ -19,7 +19,7 @@ function loadBookmarkItems (sortFunction, searchString)
             // If there is no browsing data available
             if (!searchString || searchString.length === 0 )
             {
-                animateErrorNode ("You have no bookmarks.<br>Please add some.")
+                animateErrorNode ("You have no bookmarks. Please add some.")
             }
 
             // There are bookmarks, but given string returned 0 results
@@ -64,7 +64,7 @@ function loadBookmarkItems (sortFunction, searchString)
             var titleText = document.createTextNode(page.title);
             titleSpan.appendChild(titleText);
 
-            /* Currently not used due to google not resolving issue 21330 and I don't want to burn user by traversing the bookmark tree every time a bookmark is loaded
+            /* Still needs some work
             // Get bookmark path
             var bookmarkPath = [];
             var currentBookmark = page;
