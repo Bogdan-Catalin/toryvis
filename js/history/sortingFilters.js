@@ -18,10 +18,12 @@ function sortHistoryItems () {
         if (criteria.indexOf('Descending') > -1)
         {
             loadHistoryItems(descCompareHistoryDate,searchString);
+            return;
         }
         else
         {
             loadHistoryItems(ascCompareHistoryDate,searchString);
+            return;
         }
     }
     if (option.indexOf('Most') > -1)
@@ -31,10 +33,12 @@ function sortHistoryItems () {
         if (criteria.indexOf('Descending') > -1)
         {
             loadHistoryItems(descCompareHistoryVisits,searchString);
+            return;
         }
         else
         {
             loadHistoryItems(ascCompareHistoryVisits,searchString);
+            return;
         }
     }
 }

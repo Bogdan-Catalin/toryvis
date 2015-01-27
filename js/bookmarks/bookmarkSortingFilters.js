@@ -18,10 +18,12 @@ function sortBookmarkItems () {
         if (criteria.indexOf('Descending') > -1)
         {
             loadBookmarkItems(descCompareBookmarkDate,searchString);
+            return;
         }
         else
         {
             loadBookmarkItems(ascCompareBookmarkDate,searchString);
+            return;
         }
     }
     if (option.indexOf('Most') > -1)
@@ -31,10 +33,12 @@ function sortBookmarkItems () {
         if (criteria.indexOf('Descending') > -1)
         {
             loadBookmarkItems(descCompareHistoryVisits,searchString);
+            return;
         }
         else
         {
             loadBookmarkItems(ascCompareHistoryVisits,searchString);
+            return;
         }
     }
 }
