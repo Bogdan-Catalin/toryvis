@@ -54,7 +54,7 @@ html, body
 	height: 10%;
 	margin: 0;
 
-    background-color: #5D8D89;
+    background-color: #03A9F4;
 
     position: relative;
     z-index: 10;
@@ -71,7 +71,7 @@ html, body
 
     z-index: 5;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    background-color: #ffe9aa;
+    background-color: #FFF59D;
 }
 
 #footer
@@ -81,7 +81,7 @@ html, body
 	margin: 0;
 
 	display: inline-block;
-	background-color: #5D8D89;
+	background-color: #03A9F4;
 
     z-index: 7;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);

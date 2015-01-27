@@ -6,7 +6,7 @@
     margin-top: 5%;
     margin-bottom: 2%;
 
-    background-color: #FFF5DB;
+    background-color: #FFF9C4;
 
     float: left;
 
@@ -25,7 +25,8 @@
     margin-left: 20px;
     margin-right: 20px;
 
-    background-color: rgba(143,155,153,1);
+    //background-color: rgba(143,155,153,1);
+    background-color: #607D8B;
 
     position: relative;
     display:inline-block;
@@ -41,7 +42,7 @@
 
 .history_item_container:hover
 {
-    background-color: rgba(101,155,153,1);
+    background-color: #42A5F5;
 }
 
 .history_item_container > *

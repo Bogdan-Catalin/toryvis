@@ -40,7 +40,7 @@ html, body
     height: 10%;
     margin: 0;
 
-    background-color: #5D8D89;
+    background-color: #03A9F4;
 
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     z-index:10;
@@ -61,7 +61,7 @@ html, body
 {
     width: 15%;
     height: 100%;
-    background-color: #ffe9aa;
+    background-color: #FFF59D;
 
     position: relative;
 
