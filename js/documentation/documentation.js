@@ -7,6 +7,7 @@ $(document).ready(function()
     $('#find').on('click', findLoader);
     $('#import').on('click', importLoader);
     $('#statistics').on('click', statisticsLoader);
+    $('#movie').on('click', movieLoader);
 });
 
 /**
@@ -133,6 +134,30 @@ function staHtml () {
     var html = "<h1>View browsing statistics and save them to disk</h1>\
     <span>In order to view statistics on your browsing history, just click on the 'statistics' button and you will be taken to a new page. There you can select statistics criteria and the start + end dates. If you want to save the generated graphics on your computer, just scroll down and click on one of the three buttons - SVG, PNG or JPG, based on the desired graphics format.</span>\
     <div class='img_wrapper'><img src='resources/doc/statisticsTutorial.gif'></div>";
+
+    return html;
+}
+
+
+
+function movieLoader()
+{
+    var tutorialWrapper = document.getElementById ('tutorial_wrapper');
+
+    // Destroy whatever was there before
+    tutorialWrapper.innerHTML="";
+
+    // Create a tutorial node
+    var tutorialNode = document.createElement('div');
+    tutorialNode.id = 'tutorial';
+    tutorialNode.innerHTML=movHtml();
+
+    tutorialWrapper.appendChild(tutorialNode);
+}
+
+function movHtml () {
+    var html = "<h1>Movie tutorial on how to use toryvis extension</h1>\
+    <div class='img_wrapper'><video controls><source src='resources/doc/toryvis.mp4'></video></div>";
 
     return html;
 }
