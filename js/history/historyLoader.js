@@ -6,7 +6,7 @@
  */
 function loadHistoryItems(sortFunction,searchString) {
     chrome.history.search({text: searchString, maxResults: 10000}, function (data) {
-        if (data.length == 0)
+        if (data.length === 0)
         {
             // If there is no browsing data available
             if (!searchString || searchString.length === 0 )
