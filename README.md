@@ -1,3 +1,2 @@
-# toryvis (web browser history visualizer) #
-
-Să se creeze o extensie pentru un browser Web capabilă să ofere utilizatorului diverse maniere de vizualizare a istoricului navigării şi a adreselor Web favorite (bookmark-uri) – eventual preluate din surse externe precum Delicious sau Pocket. Reprezentările grafice generate vor putea fi exportate, minimal, în formate raster precum PNG şi formate vectoriale ca SVG.
+This extension offers an alternative to the default Chrome history and bookmark browsers.
+Its aim is to provide a better visual representation of URL items, with more data filtering criteria and it offers the ability to import bookmarks from various web services.
