@@ -156,7 +156,7 @@ function movieLoader()
 }
 
 function movHtml () {
-    var html = "<h1>Movie tutorial on how to use toryvis extension</h1>\
+    var html = "<h1>Movie tutorial on how to use extension</h1>\
     <div class='img_wrapper'><video controls><source src='resources/doc/toryvis.mp4'></video></div>";
 
     return html;

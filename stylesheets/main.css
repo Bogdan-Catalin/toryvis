@@ -24,7 +24,7 @@ html, body
 	margin: 0;
 
 	overflow: hidden;
-	background-color: #5D8D89;
+	background-color: #009688;
 
 	-moz-user-select: none;
 	-webkit-user-select: none;
@@ -57,7 +57,7 @@ html, body
     background-color: #009688;
 
     position: relative;
-    z-index: 10;
+    z-index: 1;
     -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.75);
 }
 
@@ -69,9 +69,9 @@ html, body
 
 	position: relative;
 
-    z-index: 5;
+    z-index: 10;
+    background-color: #FFC65E;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    background-color: #FFF59D;
 }
 
 #footer
@@ -83,7 +83,7 @@ html, body
 	display: inline-block;
 	background-color: #004D40;
 
-    z-index: 7;
+    z-index: 1;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 

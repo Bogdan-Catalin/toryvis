@@ -119,3 +119,13 @@
 {
     background-color: #555794;
 }
+
+#statistics
+{
+    display: none;
+}
+
+#help
+{
+    display: none;
+}
